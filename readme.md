@@ -4,12 +4,12 @@ Vous devez **forker** ce projet dans votre espace de travail Gitlab (bouton `For
 
 Un unique fork doit être réalisé par étudiant.
 
-Une fois cela réalisé supprimez ces premières lignes et indiquez ci-dessous les noms des membres du binôme.  
-N'oubliez pas d'ajouter votre enseignant de TP à ce dépôt git.
+Une fois cela réalisé, supprimez ces premières lignes et indiquez ci-dessous votre nom.  
+N'oubliez pas d'ajouter votre enseignant de TP à ce dépôt git, avec le rôle *developer*.
 
 ## étudiant
 
- - nom1 prénom1
+ - Nom Prénom
 
 
 ## ressources
