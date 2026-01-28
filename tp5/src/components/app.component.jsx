@@ -1,7 +1,7 @@
 const App = () => {
 
   return (
-    <div>App</div>
+    <div>composant App à créer</div>
   );
 }
 export default App;

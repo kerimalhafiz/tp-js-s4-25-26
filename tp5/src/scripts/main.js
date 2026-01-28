@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 
-// import ReactJs components
+// import React components
 import App from '../components/app.component.jsx';
 
 /*
@@ -15,7 +15,6 @@ const bootstrapReact =
       );
    }
 
-//window.addEventListener('DOMContentLoaded', bootstrapReact );
 bootstrapReact();
 
 console.log('le bundle a été généré !');

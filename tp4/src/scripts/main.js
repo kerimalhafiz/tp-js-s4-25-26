@@ -8,7 +8,6 @@ const bootstrapReact = () => {
     root.render(component);
 }
 
-//window.addEventListener('DOMContentLoaded', bootstrapReact );
 bootstrapReact();
 
 console.log('le bundle a été généré !');
