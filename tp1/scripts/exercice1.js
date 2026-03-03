@@ -41,8 +41,8 @@ console.log(`Q4 - example2(numbers, 5) : ${example2(numbers, 5)}`);
 console.log(` *** EXERCICE 2 *** `);
 const  listname= persons.map(person => person.name);
 console.log(`Q1-la liste de de tous les nom: ${listname}`);
-
-const premierletter=listname.toUppercase()
+const firstletterName=persons.map(person=>person.name[0].toUpperCase());
+console.log(`Q2- les premier letter de chaque nom ${firstletterName}`);
             
             
 
