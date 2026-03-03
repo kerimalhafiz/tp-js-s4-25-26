@@ -41,7 +41,7 @@ console.log(`Q4 - example2(numbers, 5) : ${example2(numbers, 5)}`);
 console.log(` *** EXERCICE 2 *** `);
 const  listname= persons.map(person => person.name);
 console.log(`Q1-la liste de de tous les nom: ${listname}`);
-const firstletterName=persons.map(person=>person.name[0].toUpperCase());
+const firstletterName=(persons.map(person=>person.name[0].toUpperCase()));
 console.log(`Q2- les premier letter de chaque nom ${firstletterName}`);
 
 const niemeletter=persons.map((person,indexe)=>person.name[indexe]|| undefined);
@@ -78,6 +78,23 @@ console.log(`tableau decomposé de mot ${timoArray}`);
 const newTimostr=timoArray.join('-');
 console.log(`tableau decomposé du mot par -: ${newTimostr}`);
 
+
+const test=x=>x.codePointAt(0)-'a'.codePointAt(0);
+console.log(test('a'));
+const shiftcodePoint=(carac)=>{
+   const ofset=carac.codePointAt(0)-'a'.codePointAt(0);
+   return 9398+ofset;
+}
+console.log(`Q2-affichage de l unicode: ${shiftcodePoint('c')}`);
+
+const shiftcodePointList=(list)=>{
+  const soustract=list.codePointAt(list.length())-'a'.codePointAt(0);
+  const tab=[];
+  const calcul=9398+soustract;
+  return tab.push(calcul);
+}
+
+console.log(`Q3-affichage de l unicode d une liste : ${shiftcodePointList('timoleon')}`);
 
 
 /*********************************************/
