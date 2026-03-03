@@ -67,6 +67,17 @@ console.log(`Q5-utilisation de myMap ${namemaj}`);
 
 /********** EXERCICE 3 ***********************/
 console.log(` *** EXERCICE 3 *** `);
+const ages=persons.map(person=>person.age);
+console.log(`age=${ages}`);
+
+const maxAge=Math.max(...ages);
+console.log(`Maxage=${maxAge}`);
+const timoStr='timoleon';
+const timoArray=[...timoStr];
+console.log(`tableau decomposé de mot ${timoArray}`);
+const newTimostr=timoArray.join('-');
+console.log(`tableau decomposé du mot par -: ${newTimostr}`);
+
 
 
 /*********************************************/
