@@ -43,6 +43,9 @@ const  listname= persons.map(person => person.name);
 console.log(`Q1-la liste de de tous les nom: ${listname}`);
 const firstletterName=persons.map(person=>person.name[0].toUpperCase());
 console.log(`Q2- les premier letter de chaque nom ${firstletterName}`);
+
+const niemeletter=persons.map((person,indexe)=>person.name[indexe]|| undefined);
+console.log(`Q3-les n-ieme letter de chaque nom ${niemeletter}`);
             
             
 
