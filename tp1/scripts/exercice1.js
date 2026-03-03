@@ -87,15 +87,13 @@ const shiftcodePoint=(carac)=>{
 }
 console.log(`Q2-affichage de l unicode: ${shiftcodePoint('c')}`);
 
-const shiftcodePointList=(list)=>{
-  const soustract=list.codePointAt(list.length())-'a'.codePointAt(0);
-  const tab=[];
-  const calcul=9398+soustract;
-  return tab.push(calcul);
-}
+const shiftcodePointList=(list)=>list.split('').map(predicat=>shiftcodePoint(predicat));
+
 
 console.log(`Q3-affichage de l unicode d une liste : ${shiftcodePointList('timoleon')}`);
 
+const list_name_entourer=persons.map(person=>String.fromCodePoint(...shiftcodePointList(person.name.toLowerCase())));
+console.log(`Q4-affichage de l unicode d une liste : ${list_name_entourer}`);
 
 /*********************************************/
 
