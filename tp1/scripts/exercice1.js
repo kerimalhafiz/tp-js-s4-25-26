@@ -46,8 +46,21 @@ console.log(`Q2- les premier letter de chaque nom ${firstletterName}`);
 
 const niemeletter=persons.map((person,indexe)=>person.name[indexe]|| undefined);
 console.log(`Q3-les n-ieme letter de chaque nom ${niemeletter}`);
-            
-            
+
+
+const capitalize=str=> str.charAt(0).toUpperCase()+str.slice(1);
+const premiermajName=persons.map(person=>capitalize(person.name));
+console.log(`Q-4 premier lettre majuscule de tout les nom ${premiermajName}`);
+
+const MyMap=(list,funct)=>{
+    const result=[];
+    for(let indexe in list){
+      result.push(funct(list[indexe],parseInt(indexe),list));
+    }
+     return result;
+}
+const namemaj=MyMap(persons,person=>capitalize(person.name));            
+console.log(`Q5-utilisation de myMap ${namemaj}`);
 
 /*********************************************/
 
