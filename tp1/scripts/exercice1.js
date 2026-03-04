@@ -100,6 +100,18 @@ console.log(`Q4-affichage de l unicode d une liste : ${list_name_entourer}`);
 
 /********** EXERCICE 4 ***********************/
 console.log(` *** EXERCICE 4 *** `);
+const multiple10=numbers.map(element=>element*10);
+console.log(`Q1-multiple de 10 de la tab : ${multiple10}`);
+const multiple=(n,l)=>l.map(element=>element*n);
+console.log(`Q2-multiple de n de la tab : ${multiple(20,numbers)}`);
+
+const multiple5=(liste)=>multiple(5,liste);
+console.log(`multiple de 5 tab : ${multiple5(numbers)}`);
+
+
+
+
+
 
 
 /*********************************************/
