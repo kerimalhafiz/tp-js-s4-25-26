@@ -23,9 +23,9 @@ const makeDrawings = timolImg => {
   context.fillStyle = "rgb(255,255,0)";
   context.fillRect(120, 150, 250, 50);
 
-  // context.clearRect(50,100,180,180);    // efface une partir du canvas
+   context.clearRect(50,100,180,180);    // efface une partir du canvas
 
-  // context.clearRect(0, 0, myCanvas.width, myCanvas.height);  // efface tout le contenu du canvas
+   context.clearRect(0, 0, myCanvas.width, myCanvas.height);  // efface tout le contenu du canvas
 }
 
 drawInCanvas(); // exécutée après le chargement de l'arbre DOM grâce à l'attribut defer de la balise <script>
