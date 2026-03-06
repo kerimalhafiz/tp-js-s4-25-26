@@ -173,6 +173,16 @@ console.log(`Q3-maxNumber2: :${maxNumber(numbers)}`);
 const sum=(...nombre)=>nombre.reduce((total,n)=>total+n,0);
 console.log(`Q4-sum: :${sum(...numbers)}`);
 
+const myReduce=(liste,func,initialvalue)=>{
+      let acc=initialvalue
+      for(let indexe in liste){
+      acc=func(acc,liste[indexe]);
+      }
+      return acc;
+}
+const testReduce=myReduce(numbers,sum,0)
+console.log(`Q6-myReduce :${sum(...numbers)}`);
+
 /*********************************************/
 
 
