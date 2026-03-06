@@ -248,7 +248,14 @@ console.log(`Q6-Every :${isSubArray(numbers,[1, 2, 7, 4, 6, 3, 8])}`);
 
 /********** EXERCICE 10 ***********************/
 console.log(` *** EXERCICE 10 *** `);
+const occurrences = (word) =>
+  [...word].reduce((map, char) => {
+    map.set(char, (map.get(char) || 0) + 1);
+    return map;
+  }, new Map()); 
 
-
-
+const table =occurrences('abracadabra')
+console.log(`Q1-table:${table}`);
+[...table]
+  .forEach(([c,n]) => console.log(`${c} -> ${n}`));
 /*********************************************/
