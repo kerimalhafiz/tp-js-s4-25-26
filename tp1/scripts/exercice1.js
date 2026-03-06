@@ -106,10 +106,16 @@ const multiple=(n,l)=>l.map(element=>element*n);
 console.log(`Q2-multiple de n de la tab : ${multiple(20,numbers)}`);
 
 const multiple5=(liste)=>multiple(5,liste);
-console.log(`multiple de 5 tab : ${multiple5(numbers)}`);
+console.log(`Q3-multiple de 5 tab : ${multiple5(numbers)}`);
 
 
+const multipleFactory=(factor)=>{
+  return (liste)=>multiple(factor,liste)
+};
 
+const multiple100=multipleFactory(100);
+console.log(typeof(multiple100) );
+console.log(`Q4-l utilisation de multiple factory ${multiple100(numbers)}`);
 
 
 
@@ -118,20 +124,54 @@ console.log(`multiple de 5 tab : ${multiple5(numbers)}`);
 
 /********** EXERCICE 5 ***********************/
 console.log(` *** EXERCICE 5 *** `);
+numbers.forEach(e=>console.log(e));
+persons.forEach(e=>console.log(`${e.name} a ${e.age} ans`));
+const myForEach=(liste,funct)=>{
+  
+  for(let element in liste){
+      funct(liste[element])
+    
+  }
 
+}
+myForEach(numbers,e=>console.log(`Q-4.1:${e}`));
+
+myForEach(persons,e=>console.log(`Q-4.2 my ForEach:${e.name} a ${e.age} ans`));
 
 /*********************************************/
 
 /********** EXERCICE 6 ***********************/
 console.log(` *** EXERCICE 6 *** `);
+const liste_inferieur_5=numbers.filter(e=> e<5);
+console.log(`Q1-liste des element inferieur a 5 :${liste_inferieur_5}`);
+const createAcronym=(phrase)=>
+  phrase
+    .split(" ")
+    .filter(word=>word.length >3)
+    .map(word=>word[0].toUpperCase())
+    .join("")
 
+console.log(`Q3-accronyme: :${createAcronym('formations en informatique de lille')}`);
 
 /*********************************************/
 
 
 /********** EXERCICE 7 ***********************/
 console.log(` *** EXERCICE 7 *** `);
+const nbLetters=(phrase)=>
+  phrase
+    .split(" ")
+    .reduce((total,word)=>total+word.length,0)
 
+
+console.log(`Q1-nbletter: :${nbLetters('formations en informatique de lille')}`);
+const max=(nombre1,nombre2)=> nombre1>nombre2?nombre1:nombre2;
+const maxNumber=(number)=> number.reduce(max);
+console.log(`Q2-maxNumber: :${maxNumber(numbers)}`);
+const maxNumber2=(number)=>Math.max(...number);
+console.log(`Q3-maxNumber2: :${maxNumber(numbers)}`);
+const sum=(...nombre)=>nombre.reduce((total,n)=>total+n,0);
+console.log(`Q4-sum: :${sum(...numbers)}`);
 
 /*********************************************/
 
