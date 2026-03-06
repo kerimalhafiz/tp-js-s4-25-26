@@ -181,7 +181,7 @@ const myReduce=(liste,func,initialvalue)=>{
       return acc;
 }
 const testReduce=myReduce(numbers,sum,0)
-console.log(`Q6-myReduce :${sum(...numbers)}`);
+console.log(`Q6-myReduce :${testReduce}`);
 
 /*********************************************/
 
@@ -197,12 +197,51 @@ const lesReponses = [
                   {nom : 'Frodo', present : 'oui'},
                   {nom : 'Timo Leon', present : 'non'},
                  ];
+const participant=(listeinvité,listreponse)=>{
+  const refus=listreponse
+            .filter(r=>r.present==='non')
+            .map(r=>r.nom)
+            
+
+            return listeinvité.filter(nom=>!refus.includes(nom));
+}
+console.log(`Q1-reponse :${participant(lesInvites,lesReponses)}`);
 
 /*********************************************/
 
 /********** EXERCICE 9 ***********************/
 console.log(` *** EXERCICE 9 *** `);
+const mySome=(liste,funct)=>{
+    for(let indexe in liste){
+      if(funct(liste[indexe]))
+        return true;
+    }
+    return false;
 
+}
+const estpair=(n)=>n%2===0;
+const estnegative=(n)=> n<0;
+console.log(`Q2.1-mySome :${mySome(numbers,estpair)}`);
+console.log(`Q2.2-mySomenegative :${mySome(numbers,estnegative)}`);
+console.log(`Q2.1-Some :${numbers.some(estpair)}`);
+console.log(`Q2.2-Somenegative :${numbers.some(estnegative)}`);
+
+const myEvery=(liste,funct)=>{
+    for(let indexe in liste){
+      if(!funct(liste[indexe]))
+        return false;
+    }
+    return true;
+
+}
+console.log(`Q3.1-myEvery :${myEvery(numbers,estpair)}`);
+console.log(`Q3.2-myEvery :${myEvery(numbers,estnegative)}`);
+console.log(`Q3.1-Every :${numbers.every(estpair)}`);
+console.log(`Q3.2-Every :${numbers.every(estnegative)}`);
+
+const isSubArray=(liste1,liste2)=>liste1.every(e=>liste2.includes(e));
+console.log(`Q6-Every :${isSubArray(numbers,[1, 10, 2, 7, 4, 6, 3, 5, 8])}`);
+console.log(`Q6-Every :${isSubArray(numbers,[1, 2, 7, 4, 6, 3, 8])}`);
 
 
 /*********************************************/
