@@ -11,6 +11,13 @@
  */
 const init = () => {
   // création et ajout des images dans #mur
+  const mur=document.getElementById('mur');
+  dataImages
+    .map(createImage)
+    .forEach(img=>{
+      img.addEventListener('mouseover',details);
+      mur.appendChild(img)
+    });
 
   // gestion de #filtre
   const filtre = document.getElementById('filtre');
@@ -48,6 +55,16 @@ const details = event => {
 *   On ne s'occupe pas de la casse des caractères (minuscules ou majuscules) lors du filtrage.
 */
 const filtreImages = event => {  
+  const texteFiltre=event.target.value.toLowercase();
+  const images=document.querySelectorAll('#mur img');
+
+  images.forEach(img =>{
+    if(img.title.toLowercase().includes(texteFiltre)){
+      img.computedStyleMap.display='';
+    }else{
+      img.computedStyleMap.display='none';
+    }
+  })
 }
 
 init();
