@@ -18,8 +18,9 @@ export default class Ball {
   }
 
   /* draw this ball, using the given drawing 2d context */
+  /** c'est a dire on dessine l image au point (x,y)avec une taille 48*48  */
   draw(context) {
-    alert('vous devez coder la méthode draw() de Ball');
+    context.drawImage(this.image,this.x,this.y,Ball.BALL_WIDTH,Ball.BALL_WIDTH);
   }
 
 
@@ -34,6 +35,23 @@ export default class Ball {
   }
   get height() {
     return this.image.height;
+  }
+  /** deplacement avec repond avant de bouger on regarde si 
+   * le prochain deplacement ferait sortir la balle
+   * à gauche  ou à droite
+   * en bas ou en haut 
+   * l inversion deltax pour le rebond horizontal
+   * l inversion de deltay pour un rebond vertical
+  */
+  move(canvas){
+    if(this.x+this.deltaX <0 || this.x+this.deltaX+Ball.BALL_WIDTH>canvas.width){
+      this.deltaX=-this.deltaX;
+    }
+    if(this.y+this.deltaY<0 || this.y+this.deltaY+Ball.BALL_WIDTH>canvas.height){
+      this.deltaY=-this.deltaY;
+    }
+    this.x+=this.deltaX;
+    this.y+=this.deltaY;
   }
 
 }
