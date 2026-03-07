@@ -7,8 +7,13 @@ export default class Ball {
 
 	static BALL_WIDTH = 48;
 
-  constructor() {
+  constructor( x,y,deltaX=3,deltaY=-2) {
+
     // A COMPLETER...
+    this.y=y
+    this.x=x
+    this.deltaX=deltaX
+    this.deltaY=deltaY
     this.image = this.#createImage(ballImgSrc);
   }
 
