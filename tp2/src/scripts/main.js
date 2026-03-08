@@ -16,6 +16,7 @@ const init = () => {
   // décommenter les deux lignes suivantes à partir la question Ex1 Q4
   const animation = new Animation(canvas);
   document.getElementById("stopStartBall").addEventListener("click", () => animation.startAndStop()  );
+  document.getElementById("addBall").addEventListener("click",()=>animation.addBall());
   
 }
 
