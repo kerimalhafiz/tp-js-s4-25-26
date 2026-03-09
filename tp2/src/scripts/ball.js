@@ -53,5 +53,10 @@ export default class Ball {
     this.x+=this.deltaX;
     this.y+=this.deltaY;
   }
+  collisionWith(Obstacle){
+    let [x,y]=[Obstacle.x,Obstacle.y];
+    let [xB,yB]=[this.x,this.y]
+  
+  }
 
 }

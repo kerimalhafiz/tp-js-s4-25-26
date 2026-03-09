@@ -12,4 +12,5 @@ export default class Obstacle{
         context.fillStyle="black";
         context.fillRect(this.x,this.y,this.width,this.height);
     }
+    
 }
