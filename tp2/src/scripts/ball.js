@@ -56,6 +56,20 @@ export default class Ball {
   collisionWith(Obstacle){
     let [x,y]=[Obstacle.x,Obstacle.y];
     let [xB,yB]=[this.x,this.y]
+    //calcul de point de rectangle(rectangle de la ball)
+    let xB2=xB+this.width;
+    let yB2=yB+this.height;
+    //calcul de rectangle de l obtacle
+    let x2=x+Obstacle.width;
+    let y2=y+Obstacle.height;
+    //calcul de p1
+    let p1x=Math.max(xB,x);
+    let p1y=Math.max(yB,y);
+
+    let p2x=Math.min(xB2,x2);
+    let p2y=Math.min(yB2,y2);
+
+    return (p1x< p2x && p1y <p2y);
   
   }
 
