@@ -5,7 +5,7 @@ import Animation from "./animation";
 
 export default class AnimationWithobstacle extends Animation{
 
-    constructor(obstacle,canvas){
+    constructor(canvas,obstacle){
         super(canvas);
         this.obstacle=obstacle;
 
@@ -13,14 +13,12 @@ export default class AnimationWithobstacle extends Animation{
     }
      animate(){
     this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
-    this.ball.forEach(balls=>{
-        balls.move(this.canvas);
-    })
-    this.ball=this.ball.filter(balls=>!balls.collisionWith(this.obstacle));
-    this.ball.forEach(balls => balls.draw(this.context));
+    this.balls.forEach(ball=>ball.move(this.canvas))
+    this.balls=this.balls.filter(ball=>!ball.collisionWith(this.obstacle));
     this.obstacle.draw(this.context);
-   
+    this.balls.forEach(ball => ball.draw(this.context));
     this.requestId=requestAnimationFrame(()=>this.animate());
+    
   }
 
 }

@@ -16,8 +16,8 @@ const init = () => {
   //document.getElementById("stopStartBall").addEventListener("click", () => ball.draw(canvas.getContext('2d'))  );
 
   // décommenter les deux lignes suivantes à partir la question Ex1 Q4
-  const obstacle=new Obstacle();
-  const animationWith = new AnimationWithobstacle(obstacle,canvas);
+  const obstacle=new Obstacle(200,150,120,40);
+  const animationWith = new AnimationWithobstacle(canvas,obstacle);
   document.getElementById("stopStartBall").addEventListener("click", () => animationWith.startAndStop()  );
   document.getElementById("addBall").addEventListener("click",()=>animationWith.addBall());
   

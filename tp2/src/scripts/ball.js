@@ -57,8 +57,8 @@ export default class Ball {
     let [x,y]=[Obstacle.x,Obstacle.y];
     let [xB,yB]=[this.x,this.y]
     //calcul de point de rectangle(rectangle de la ball)
-    let xB2=xB+this.width;
-    let yB2=yB+this.height;
+    let xB2=xB+Ball.BALL_WIDTH;
+    let yB2=yB+Ball.BALL_WIDTH;
     //calcul de rectangle de l obtacle
     let x2=x+Obstacle.width;
     let y2=y+Obstacle.height;

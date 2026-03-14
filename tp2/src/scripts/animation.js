@@ -6,14 +6,14 @@ export default class Animation {
   constructor(canvas){
     this.canvas=canvas
     this.context=canvas.getContext('2d');
-    this.ball=[]
+    this.balls=[]
     this.requestId=null
   }
   animate(){
     this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
-    this.ball.forEach(balls=>{
-        balls.move(this.canvas);
-        balls.draw(this.context);
+    this.balls.forEach(ball=>{
+        ball.move(this.canvas);
+        ball.draw(this.context);
     })
    
     this.requestId=requestAnimationFrame(()=>this.animate());
@@ -42,6 +42,6 @@ export default class Animation {
       deltaX=this.alea(11)-5;
       deltaY=this.alea(11)-5;
     }
-    this.ball.push(new Ball(x,y,deltaX,deltaY));
+    this.balls.push(new Ball(x,y,deltaX,deltaY));
   }
 }
