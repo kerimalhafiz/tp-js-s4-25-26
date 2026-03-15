@@ -15,7 +15,7 @@ export default class AnimationWithobstacle extends Animation{
     }
      animate(){
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.obstacle.handleMoveKeys(this.keyManager);
+    this.obstacle.handleMovekeys(this.keyManager);
     this.obstacle.move(this.canvas);
     this.balls.forEach(ball => ball.move(this.canvas));
     this.balls = this.balls.filter(ball => !ball.collisionWith(this.obstacle));
@@ -27,11 +27,11 @@ export default class AnimationWithobstacle extends Animation{
     switch(event.key){
         case "ArrowLeft":
         case "Left":
-                this.KeyManager.leftPressed();
+                this.keyManager.leftPressed();
             break;
         case "ArrowRight":
-        case "Left":
-            this.KeyManager.rightPressed();
+        case "Right":
+            this.keyManager.rightPressed();
             break;
         default: return;
     }

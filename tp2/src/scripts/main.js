@@ -20,7 +20,7 @@ const init = () => {
   const animationWith = new AnimationWithobstacle(canvas,obstacle);
   document.getElementById("stopStartBall").addEventListener("click", () => animationWith.startAndStop()  );
   document.getElementById("addBall").addEventListener("click",()=>animationWith.addBall());
-  window.addEventListener('keydown',Animation.keyDownActionHandler.bind(Animation));
+  window.addEventListener('keydown',animationWith.keyDownActionHandler.bind(animationWith));
 
 }
 
