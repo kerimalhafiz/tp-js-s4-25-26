@@ -37,5 +37,20 @@ export default class AnimationWithobstacle extends Animation{
     }
     event.preventDefault();
   }
+  keyUpActionHandler(event){
+    switch(event.key){
+        case"ArrowLeft":
+        case "Left":
+            this.keyManager.leftReleased();
+            break;
+        case "ArrowRight":
+        case "Right":
+                this.keyManager.rightReleased();
+                break;
+        default:
+            return;
+    }
+    event.preventDefault();
+  }
 
 }

@@ -21,6 +21,7 @@ const init = () => {
   document.getElementById("stopStartBall").addEventListener("click", () => animationWith.startAndStop()  );
   document.getElementById("addBall").addEventListener("click",()=>animationWith.addBall());
   window.addEventListener('keydown',animationWith.keyDownActionHandler.bind(animationWith));
+  window.addEventListener('keyup',animationWith.keyUpActionHandler.bind(animationWith));
 
 }
 
