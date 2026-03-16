@@ -20,9 +20,18 @@ export default class Obstacle{
     }
     stopMoving(){
         this.deltaX=0;
+        this.deltaY=0;
+    }
+    moveUP(){
+        this.deltaY=-10;
+    }
+    movedown(){
+        this.deltaY =+10;
     }
     move(box){
         this.x=Math.max(0,Math.min(box.width -this.width,this.x+this.deltaX));
+        this.y=Math.max(0,Math.min(box.height -this.height,this.y+this.deltaY));
+
     }
     handleMovekeys(keyManager){
         this.stopMoving();
@@ -31,6 +40,12 @@ export default class Obstacle{
         }
         if(keyManager.right){
             this.moveRight()
+        }
+        if(keyManager.up){
+            this.moveUP();
+        }
+        if(keyManager.down){
+            this.movedown();
         }
     }
 }
