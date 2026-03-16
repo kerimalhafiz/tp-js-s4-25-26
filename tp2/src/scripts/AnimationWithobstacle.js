@@ -33,6 +33,14 @@ export default class AnimationWithobstacle extends Animation{
         case "Right":
             this.keyManager.rightPressed();
             break;
+        case "ArrowUp":
+        case "Up":
+            this.keyManager.upPressed();
+           break;
+        case "ArrowDown":
+        case "Down":
+             this.keyManager.downPressed();
+            break;
         default: return;
     }
     event.preventDefault();
@@ -47,6 +55,14 @@ export default class AnimationWithobstacle extends Animation{
         case "Right":
                 this.keyManager.rightReleased();
                 break;
+        case "ArrowUp":
+        case "Up":
+            this.keyManager.upReleased();
+           break;
+        case "ArrowDown":
+        case "Down":
+             this.keyManager.downReleased();
+            break;
         default:
             return;
     }
