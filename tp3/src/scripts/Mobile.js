@@ -2,17 +2,17 @@
 
 export default class Mobile{
 
-    constructor(x,y,deltaX=0,deltaY=0,MobilImg){
+    constructor(x,y,MobilImg,deltaX=0,deltaY=0){
         this.x=x;
         this.y=y;
         this.deltaX=deltaX;
         this.deltaY=deltaY;
-        this.image=this.createImage(MobilImg);
+        this.image=this.#createImage(MobilImg);
     }
     draw(context){
         context.drawImage(this.image,this.x,this.y);
     }
-    createImage(imgsource){
+    #createImage(imgsource){
         const newImg=new Image();
         newImg.src=imgsource;
         return newImg;
@@ -29,4 +29,5 @@ export default class Mobile{
         this.y+=this.deltaY;
 
     }
+   
 }

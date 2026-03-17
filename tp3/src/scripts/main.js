@@ -8,6 +8,8 @@ const init = () => {
    const canvas = document.getElementById("playfield");
    const game = new Game(canvas);
    game.animate();
+   window.addEventListener("keydown",game.keyUpActionHandler.bind(game.animate()));
+   
 
    alert('Complétez la fonction init(), la classe Game et les autres classes demandée');
 }
