@@ -33,45 +33,39 @@ export default class Game {
       this.#player.draw(this.#context)
       this.requestId=requestAnimationFrame(()=>this.animate());
    }
-    keyDownActionHandler(event){
+    keyUpActionHandler(event){
     switch(event.key){
         case "ArrowLeft":
         case "Left":
-                this.keyManager.leftPressed();
-            break;
         case "ArrowRight":
         case "Right":
-            this.keyManager.rightPressed();
-            break;
         case "ArrowUp":
         case "Up":
-            this.keyManager.upPressed();
-           break;
         case "ArrowDown":
         case "Down":
-             this.keyManager.downPressed();
+             this.#player.stopMoving();
             break;
         default: return;
     }
     event.preventDefault();
   }
-  keyUpActionHandler(event){
+    keyDownActionHandler(event){
     switch(event.key){
         case"ArrowLeft":
-        case "Left":
-            this.keyManager.leftReleased();
+        case "left":
+            this.#player.moveLeft();
             break;
         case "ArrowRight":
         case "Right":
-                this.keyManager.rightReleased();
+            this.#player.moveRight();
                 break;
         case "ArrowUp":
         case "Up":
-            this.keyManager.upReleased();
+            this.#player.moveUp();
            break;
         case "ArrowDown":
         case "Down":
-             this.keyManager.downReleased();
+            this.#player.moveDown();
             break;
         default:
             return;
