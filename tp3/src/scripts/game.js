@@ -1,12 +1,19 @@
+import Basket from "./Basket";
 
 export default class Game {
 
    #canvas;
+   #context;
+   #player;
    // à compléter
 
    constructor(canvas) {
       this.#canvas = canvas;
-      // à compléter
+      this.#context=this.#canvas.getContext("2d");
+
+       this.#player=new Basket(this.#canvas.width /2,this.#canvas.height /2);
+       this.requestId=null;
+       
    }
 
    /** donne accès au canvas correspondant à la zone de jeu */
@@ -14,7 +21,18 @@ export default class Game {
       return this.#canvas;
    }
 
-   // à compléter
+   get Context(){
+      return this.#context;
+   }
+   get Player(){
+      return this.#player;
+   }
+   animate(){
+      this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
+      this.#player.move(this.#canvas);
+      this.#player.draw(this.#context)
+      this.requestId=requestAnimationFrame(()=>this.animate());
+   }
 }
 
 
