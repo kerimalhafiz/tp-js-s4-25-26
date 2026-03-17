@@ -10,7 +10,7 @@ export default class Mobile{
         this.image=this.createImage(MobilImg);
     }
     draw(context){
-        context.drawImage(this.image,this.x,this.y,this.width,this.height)
+        context.drawImage(this.image,this.x,this.y);
     }
     createImage(imgsource){
         const newImg=new Image();
@@ -24,14 +24,7 @@ export default class Mobile{
      return this.image.height;
     }
     move(canvas){
-        if(this.x+this.deltaX <0 || this.x+this.deltaX+this.width  >canvas.width){
-         
-            this.deltaX=-this.deltaX;
-        }
-         if(this.y+this.deltaY <0 || this.y+this.deltaY+this.height  >canvas.height){
-         
-            this.deltaY=-this.deltaY;
-        }
+
         this.x+=this.deltaX;
         this.y+=this.deltaY;
 
