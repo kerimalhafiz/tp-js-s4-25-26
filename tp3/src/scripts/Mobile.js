@@ -1,9 +1,8 @@
 
-import MobilImg from './assets/images'
 
 export default class Mobile{
 
-    constructor(x,y,deltaX=0,deltaY=0){
+    constructor(x,y,deltaX=0,deltaY=0,MobilImg){
         this.x=x;
         this.y=y;
         this.deltaX=deltaX;
