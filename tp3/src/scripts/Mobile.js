@@ -29,5 +29,8 @@ export default class Mobile{
         this.y+=this.deltaY;
 
     }
-   
+   iscollision(other){
+    return !(this.x+this.width<other.x || this.x>other.x+other.width||this.y+this.height<other.y||this.y>other.y+other.height);
+
+   }
 }

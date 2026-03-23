@@ -56,12 +56,27 @@ export default class Game {
      this.#eggs.forEach(egg =>egg.move());
      this.#eggs=this.#eggs.filter(egg =>egg.y <this.#canvas.height);
    }
+    EggCollision(){
+        this.#eggs=this.#eggs.filter(egg=>{
+            const caught=this.#player.iscollision(egg);
+            if(caught){
+                this.#score+=100;
+                return false;
+            }
+            return true;
+        });
+    }
+    drawScore(){
+        this.#context.fillText(`Score :${this.#score}`,10,30);
+    }
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
       this.#player.move(this.#canvas);
       this.moveAndFilterEggs();
+      this.EggCollision();  
       this.#player.draw(this.#context)
       this.drawEggs();
+      this.drawScore();
       this.requestId=requestAnimationFrame(()=>this.animate());
    }
     keyUpActionHandler(event){
@@ -103,7 +118,10 @@ export default class Game {
     }
     event.preventDefault();
   }
-  
+  stopGame(){
+    cancelAnimationFrame(this.requestId);
+    clearInterval(this.eggTime);
+  }
 }
 
 
