@@ -6,8 +6,9 @@ export default class Game {
    #canvas;
    #context;
    #player;
-   #egg;
+   #eggs;
    #eggcompteur;
+   #score;
 
    constructor(canvas) {
       this.#canvas = canvas;
@@ -15,17 +16,12 @@ export default class Game {
 
        this.#player=new Basket(this.#canvas.width /2,this.#canvas.height /2);
        this.requestId=null;
-       this.#egg=[];
-        this.Time= setInterval(() => {
-            if(Math.random <0.75){
-                const x= Math.random()*(this.#canvas.width-40);
-                
-
-               this.#egg.push(new Egg(x,y))   
+       this.#eggs=[];
+       this.#score=0;
+        this.eggTime= setInterval(() => {
+            if(Math.random() <0.75){
+               this.addegg();
             }
-
-          
-    
    }, 1000);
     
        
@@ -43,15 +39,29 @@ export default class Game {
       return this.#player;
    }
    get egg(){
-    return this.#egg;
+    return this.#eggs;
+   }
+   get score(){
+    return this.#score;
    }
    addegg(){
-    this.#egg.push(this.aleaIMG());
+    const x=Math.floor(Math.random()*(this.#canvas.width -50));
+    const eggimg=new Egg(x,0);
+    this.#eggs.push(eggimg);
+   }
+   drawEggs(){
+    this.#eggs.forEach(egg=>egg.draw(this.#context));
+   }
+   moveAndFilterEggs(){
+     this.#eggs.forEach(egg =>egg.move());
+     this.#eggs=this.#eggs.filter(egg =>egg.y <this.#canvas.height);
    }
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
       this.#player.move(this.#canvas);
+      this.moveAndFilterEggs();
       this.#player.draw(this.#context)
+      this.drawEggs();
       this.requestId=requestAnimationFrame(()=>this.animate());
    }
     keyUpActionHandler(event){
