@@ -18,6 +18,7 @@ export default class Game {
        this.requestId=null;
        this.#eggs=[];
        this.#score=0;
+       this.scoreElement=document.getElementById("score");
         this.eggTime= setInterval(() => {
             if(Math.random() <0.75){
                this.addegg();
@@ -61,13 +62,14 @@ export default class Game {
             const caught=this.#player.iscollision(egg);
             if(caught){
                 this.#score+=100;
+                this.updateScore();
                 return false;
             }
             return true;
         });
     }
-    drawScore(){
-        this.#context.fillText(`Score :${this.#score}`,10,30);
+    updateScore(){
+        this.scoreElement.textContent=this.#score;
     }
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
@@ -76,7 +78,6 @@ export default class Game {
       this.EggCollision();  
       this.#player.draw(this.#context)
       this.drawEggs();
-      this.drawScore();
       this.requestId=requestAnimationFrame(()=>this.animate());
    }
     keyUpActionHandler(event){
