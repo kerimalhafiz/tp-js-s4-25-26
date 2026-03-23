@@ -7,8 +7,9 @@ export default class Game {
    #context;
    #player;
    #eggs;
-   #eggcompteur;
    #score;
+   #rockets;
+   #lives;
 
    constructor(canvas) {
       this.#canvas = canvas;
@@ -17,15 +18,18 @@ export default class Game {
        this.#player=new Basket(this.#canvas.width /2,this.#canvas.height /2);
        this.requestId=null;
        this.#eggs=[];
+       this.#rockets=[];
+       this.#lives=3;
        this.#score=0;
        this.scoreElement=document.getElementById("score");
-        this.eggTime= setInterval(() => {
-            if(Math.random() <0.75){
-               this.addegg();
-            }
-   }, 1000);
+       this.eggTime=null;
+       this.started=false;
+       this.life1=document.getElementById("life-1");
+        this.life2=document.getElementById("life-2");
+        this.life3=document.getElementById("life-3");
+
+
     
-       
    }
 
    /** donne accès au canvas correspondant à la zone de jeu */
@@ -45,6 +49,10 @@ export default class Game {
    get score(){
     return this.#score;
    }
+   get lives(){
+    return this.#lives;
+   }
+
    addegg(){
     const x=Math.floor(Math.random()*(this.#canvas.width -50));
     const eggimg=new Egg(x,0);
@@ -71,6 +79,10 @@ export default class Game {
     updateScore(){
         this.scoreElement.textContent=this.#score;
     }
+    addRocket(){
+        const y=Math.floor(Math.random()*(this.#canvas.height -80));
+        const fromLeft=Math.random()<0.5;
+    }
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
       this.#player.move(this.#canvas);
@@ -79,6 +91,24 @@ export default class Game {
       this.#player.draw(this.#context)
       this.drawEggs();
       this.requestId=requestAnimationFrame(()=>this.animate());
+   }
+   start(){
+    if(this.started){
+        return;
+    }
+    this.started=true;
+    this.eggTime=setInterval(()=>{
+        if(Math.random()<0.75){
+            this.addegg();
+        }
+    },1000);
+    this.animate();
+   }
+   moveAndFilterRockets(){
+    this.#rockets.forEach(rocket=>rocket.move());
+    this.#rockets=this.#rockets.filter(
+        rocket=rocket.x +rocket.width>0 && rocket.x < this.#canvas.width
+    );
    }
     keyUpActionHandler(event){
     switch(event.key){
@@ -119,9 +149,23 @@ export default class Game {
     }
     event.preventDefault();
   }
-  stopGame(){
+  stop(){
+    if(!this.started){
+        return;
+    }
+    this.started=false;
     cancelAnimationFrame(this.requestId);
     clearInterval(this.eggTime);
+    this.requestId=null;
+    this.eggTime=null;
+  }
+  startAndStop(){
+    if(this.started){
+        this.stop();
+    }
+    else{
+        this.start();
+    }
   }
 }
 
