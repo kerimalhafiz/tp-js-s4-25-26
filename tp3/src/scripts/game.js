@@ -1,11 +1,13 @@
 import Basket from "./Basket";
+import Egg from "./Egg";
 
 export default class Game {
 
    #canvas;
    #context;
    #player;
-   // à compléter
+   #egg;
+   #eggcompteur;
 
    constructor(canvas) {
       this.#canvas = canvas;
@@ -13,6 +15,19 @@ export default class Game {
 
        this.#player=new Basket(this.#canvas.width /2,this.#canvas.height /2);
        this.requestId=null;
+       this.#egg=[];
+        this.Time= setInterval(() => {
+            if(Math.random <0.75){
+                const x= Math.random()*(this.#canvas.width-40);
+                
+
+               this.#egg.push(new Egg(x,y))   
+            }
+
+          
+    
+   }, 1000);
+    
        
    }
 
@@ -26,6 +41,12 @@ export default class Game {
    }
    get Player(){
       return this.#player;
+   }
+   get egg(){
+    return this.#egg;
+   }
+   addegg(){
+    this.#egg.push(this.aleaIMG());
    }
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
@@ -72,7 +93,7 @@ export default class Game {
     }
     event.preventDefault();
   }
-
+  
 }
 
 
