@@ -1,5 +1,6 @@
 import Basket from "./Basket";
 import Egg from "./Egg";
+import Rocket from "./Rocket";
 
 export default class Game {
 
@@ -12,9 +13,9 @@ export default class Game {
    #lives;
 
    constructor(canvas) {
+
       this.#canvas = canvas;
       this.#context=this.#canvas.getContext("2d");
-
        this.#player=new Basket(this.#canvas.width /2,this.#canvas.height /2);
        this.requestId=null;
        this.#eggs=[];
@@ -25,8 +26,8 @@ export default class Game {
        this.eggTime=null;
        this.started=false;
        this.life1=document.getElementById("life-1");
-        this.life2=document.getElementById("life-2");
-        this.life3=document.getElementById("life-3");
+    this.life2=document.getElementById("life-2");
+    this.life3=document.getElementById("life-3");
 
 
     
@@ -36,7 +37,6 @@ export default class Game {
    get canvas() {
       return this.#canvas;
    }
-
    get context(){
       return this.#context;
    }
@@ -54,7 +54,7 @@ export default class Game {
    }
 
    addegg(){
-    const x=Math.floor(Math.random()*(this.#canvas.width -50));
+    const x=Math.floor(Math.random()*(this.#canvas.width - 50));
     const eggimg=new Egg(x,0);
     this.#eggs.push(eggimg);
    }
@@ -81,17 +81,30 @@ export default class Game {
     }
     addRocket(){
         const y=Math.floor(Math.random()*(this.#canvas.height -80));
-        const fromLeft=Math.random()<0.5;
+        const rocket=new Rocket(0,y);
+        this.#rockets.push(rocket);
     }
+    drawRocket(){
+        this.#rockets.forEach(rocket=> rocket.draw(this.#context));
+    }
+    
    animate(){
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
       this.#player.move(this.#canvas);
       this.moveAndFilterEggs();
       this.EggCollision();  
-      this.#player.draw(this.#context)
+      this.hadleRocketEggocollision();
+      this.hadleRocketPlayercollision();
+      if(this.#lives>0){
+      this.#player.draw(this.#context);
+      }
       this.drawEggs();
+      this.drawRocket();
+      if(this.started){
       this.requestId=requestAnimationFrame(()=>this.animate());
+      }
    }
+
    start(){
     if(this.started){
         return;
@@ -102,13 +115,45 @@ export default class Game {
             this.addegg();
         }
     },1000);
+    this.rocketTime=setInterval(()=>{
+        if(Math.random()<0.5){
+            this.addRocket();
+        }
+    },1000);
     this.animate();
    }
    moveAndFilterRockets(){
     this.#rockets.forEach(rocket=>rocket.move());
     this.#rockets=this.#rockets.filter(
-        rocket=rocket.x +rocket.width>0 && rocket.x < this.#canvas.width
+        rocket=>rocket.x  < this.#canvas.width
     );
+   }
+   hadleRocketEggocollision(){
+    this.#rockets.forEach(rocket=>{
+        this.#eggs=this.#eggs.filter(egg=>!rocket.iscollision(egg));
+    });
+   }
+   updateLives(){
+      this.life1.style.visibility=this.#lives>=1 ?"visible ":"hidden";
+      this.life2.style.visibility=this.#lives>=2 ?"visible ":"hidden";
+      this.life3.style.visibility =this.#lives >= 3 ? "visible" : "hidden";
+
+   }
+   hadleRocketPlayercollision(){
+    this.#rockets=this.#rockets.filter(roket=>{
+        const hitPlayer=roket.iscollision(this.#player);
+        if(hitPlayer){
+            this.#score -=500;
+            this.#lives -=1;
+            this.updateScore();
+            this.updateLives();
+            if(this.#lives<=0){
+                this.stop();
+            }
+            return false;
+        }
+        return true;
+    });
    }
     keyUpActionHandler(event){
     switch(event.key){
@@ -158,6 +203,7 @@ export default class Game {
     clearInterval(this.eggTime);
     this.requestId=null;
     this.eggTime=null;
+    this.rocketTime=null;
   }
   startAndStop(){
     if(this.started){
