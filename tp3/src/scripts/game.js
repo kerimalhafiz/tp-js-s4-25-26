@@ -26,8 +26,10 @@ export default class Game {
        this.eggTime=null;
        this.started=false;
        this.life1=document.getElementById("life-1");
-    this.life2=document.getElementById("life-2");
-    this.life3=document.getElementById("life-3");
+        this.life2=document.getElementById("life-2");
+        this.life3=document.getElementById("life-3");
+        this.gameover=false;
+        this.button=document.getElementById("stopAndStartGame");
 
 
     
@@ -92,6 +94,7 @@ export default class Game {
       this.#context.clearRect(0,0,this.#canvas.width,this.#canvas.height);
       this.#player.move(this.#canvas);
       this.moveAndFilterEggs();
+      this.moveAndFilterRockets();
       this.EggCollision();  
       this.hadleRocketEggocollision();
       this.hadleRocketPlayercollision();
@@ -100,13 +103,14 @@ export default class Game {
       }
       this.drawEggs();
       this.drawRocket();
+      this.drawGameover();
       if(this.started){
       this.requestId=requestAnimationFrame(()=>this.animate());
       }
    }
-
+    
    start(){
-    if(this.started){
+    if(this.started|| this.gameover){
         return;
     }
     this.started=true;
@@ -148,6 +152,7 @@ export default class Game {
             this.updateScore();
             this.updateLives();
             if(this.#lives<=0){
+                this.gameover=true;
                 this.stop();
             }
             return false;
@@ -186,7 +191,8 @@ export default class Game {
             this.#player.moveUp();
            break;
         case "ArrowDown":
-        case "Down":
+        case "Down":    clearInterval(this.eggTime);
+
             this.#player.moveDown();
             break;
         default:
@@ -200,10 +206,13 @@ export default class Game {
     }
     this.started=false;
     cancelAnimationFrame(this.requestId);
-    clearInterval(this.eggTime);
+    clearInterval(this.rocketTime);
     this.requestId=null;
     this.eggTime=null;
     this.rocketTime=null;
+    if(this.button){
+        this.button.textContent="Start";
+    }
   }
   startAndStop(){
     if(this.started){
@@ -211,6 +220,15 @@ export default class Game {
     }
     else{
         this.start();
+    }
+  }
+
+  drawGameover(){
+    if(this.gameover){
+        this.#context.font="48px Arial";
+        this.#context.fillStyle="red";
+        this.#context.fillText("Game Over", this.#canvas.width / 2 - 130, this.#canvas.height / 2);
+         return;
     }
   }
 }
