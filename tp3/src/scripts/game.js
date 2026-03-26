@@ -110,8 +110,11 @@ export default class Game {
    }
     
    start(){
-    if(this.started|| this.gameover){
+    if(this.started){
         return;
+    }
+     if( this.gameover){
+        this.reset();
     }
     this.started=true;
     this.eggTime=setInterval(()=>{
@@ -230,6 +233,24 @@ export default class Game {
         this.#context.fillText("Game Over", this.#canvas.width / 2 - 130, this.#canvas.height / 2);
          return;
     }
+  }
+  reset(){
+       this.#eggs=[];
+       this.#rockets=[];
+       this.#lives=3;
+       this.#score=0;
+       this.gameover=false;
+       this.#player.x=this.#canvas.width/2;
+    this.#player.y=this.#canvas.height/2;
+    if(this.#player.stopMoving){
+        this.#player.stopMoving();
+    }
+    if (this.#player.stop) {
+         this.#player.stop();
+      }
+
+      this.updateScore();
+      this.updateLives();
   }
 }
 
