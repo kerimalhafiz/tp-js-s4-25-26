@@ -36,11 +36,10 @@ le joeur contole un panier avec les touches du clavier pour attraper les oeufs e
 -après 3 collision avec une fusée ,le jeu se termine.
 ## installation
 placez vous dans le dossier `tp3` puis installez les dependances avec :
-
--npm install
+-`npm install`
 ensuite faut gerer le buil donc
--npm run build
+-`npm run build`
 ensuite avec le server du developement
--npm run dev-server
+-`npm run dev-server`
 
 
