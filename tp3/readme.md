@@ -28,5 +28,19 @@ tp3$  npm run dev-server
 
 ## Votre travail
 
-Expliquez ici comment exécuter votre projet. Vous pouvez également ajouter toute précision utile sur votre travail.
+ce projet est un jeu javascript realisé avec webpack.
+le joeur contole un panier avec les touches du clavier pour attraper les oeufs et éviter les fusées
+-un oeuf attrapé rapporte **100 points**
+-une collision avec une fusée fait perdre **500points**
+-le joeur dispose de **3 vies**
+-après 3 collision avec une fusée ,le jeu se termine.
+## installation
+placez vous dans le dossier `tp3` puis installez les dependances avec :
+
+-npm install
+ensuite faut gerer le buil donc
+-npm run build
+ensuite avec le server du developement
+-npm run dev-server
+
 
