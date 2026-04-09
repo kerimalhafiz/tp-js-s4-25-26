@@ -11,7 +11,7 @@ const Boutique=({products,addInCart,quantity})=>{
         <h4>Boutique</h4>
         <input
         className='filter'
-        placeholder='filterer les produit'
+        placeholder='filtrer les produits'
         value={filterText}
         onChange={e=>setFilterText(e.target.value)}
         type='text'
