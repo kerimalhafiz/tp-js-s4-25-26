@@ -3,8 +3,8 @@ import panier from "../assets/images/panier.jpg";
 
 const Product =({produit,addInCart,quantities})=>{
 
-    const quantiteincart = quantities[produit.id] || 0;
-    const remainingStock = produit.stock - quantiteincart;
+    const quantityInCart = quantities[produit.id] || 0;
+    const remainingStock = produit.stock - quantityInCart;
 
     return(
         <div className="product">
