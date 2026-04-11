@@ -8,6 +8,8 @@ import Boutique from "./Boutique.jsx";
 const App = () => {
   const [products,setProduct] = useState([])
   const [productInCart,setProductInCart] = useState([])
+  const [quantities, setQuantities] = useState({});
+
   useEffect(()=>{
       setProduct(dataProduct);
   },[]);
@@ -27,7 +29,6 @@ const App = () => {
   }));
   }
 
-  const [quantities, setQuantities] = useState({});
 
   const updateQuantity = (productId, quantity) => {
     setQuantities((prev) => ({ ...prev, [productId]: quantity }));

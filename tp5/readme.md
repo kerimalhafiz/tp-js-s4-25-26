@@ -28,5 +28,14 @@ tp5$  npm run dev-server
 
 ## Votre travail
 
-Expliquez ici comment exécuter votre projet. Vous pouvez également ajouter toute précision utile sur votre travail.
+on se place dans le dossier `tp5` puis 
+ ### on installe 
+ `npm install`
 
+puis on éxecute le build 
+ ### éxecute le buil 
+ `npm ruin build`
+
+ -ensuite on lance le server
+ `npm run dev-server`
+ 
