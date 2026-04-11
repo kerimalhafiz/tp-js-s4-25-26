@@ -1,9 +1,9 @@
 import ProductList from "./Boutique.jsx";
 import "../assets/style/app.css"
-import ShoppingCart from "./ShoppingCart.jsx";
 import { useEffect, useState } from "react";
 import dataProduct from "../data/products.js"
 import Boutique from "./Boutique.jsx";
+import Panier from "./Panier.jsx";
 
 const App = () => {
   const [products,setProduct] = useState([])
@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div >
       <Boutique products={products} quantities={quantities}  addInCart={ajouterPanier} />
-      <ShoppingCart products={productInCart} updateQuantity={updateQuantity} quantities={quantities} removeProduct={removeProduct}/>
+      <Panier products={productInCart} updateQuantity={updateQuantity} quantities={quantities} removeProduct={removeProduct}/>
     </div>
   );
 }

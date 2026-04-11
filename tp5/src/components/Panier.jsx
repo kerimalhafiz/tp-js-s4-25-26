@@ -3,7 +3,7 @@ import "../assets/style/cart.css"
 
 
 
-const ShoppingCart = ({ products,removeProduct,updateQuantity,quantities }) => {
+const Panier = ({ products,removeProduct,updateQuantity,quantities }) => {
 
   
 
@@ -32,4 +32,4 @@ const ShoppingCart = ({ products,removeProduct,updateQuantity,quantities }) => {
     );
 };
 
-export default ShoppingCart;
+export default Panier;
